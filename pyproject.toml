@@ -1,0 +1,12 @@
+[project]
+name = "baccano-font"
+version = "0.0.0"
+requires-python = ">=3.12"
+dependencies = ["fontforge-stubs>=2026.1.2", "unicodedataplus>=16.0.0.post1"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+reportMissingModuleSource = false
