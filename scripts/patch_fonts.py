@@ -28,6 +28,9 @@ def patch(font: fontforge.font):
     # # Tweak 'at' (@) for better display with uppercase letters.
     # utils.align_with(font[ord("@")], font[ord("T")], 0.90)
 
+    # # Tweak 'dollar' ($) for better display with uppercase letters.
+    # utils.align_with(font[ord("$")], font[ord("T")])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
