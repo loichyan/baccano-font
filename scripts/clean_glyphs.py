@@ -6,6 +6,7 @@ import unicodedataplus as ud
 
 
 basic_blocks = [
+    # https://www.compart.com/en/unicode/block ->
     "Basic Latin",
     "Latin-1 Supplement",
     "Latin Extended-A",
