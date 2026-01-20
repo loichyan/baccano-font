@@ -22,6 +22,9 @@ def patch(font: fontforge.font):
     # for g in font.glyphs():
     #     utils.round(g)
 
+    # # Fix position of 'hyphen' (-).
+    # utils.align_with(font[ord("-")], font[ord("=")])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")

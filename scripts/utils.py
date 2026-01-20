@@ -11,6 +11,7 @@ def round(glyph: fontforge.glyph):
     glyph.round(1000)
 
 
+# TODO: rebase
 def transform(glyph: fontforge.glyph, matrix):
     """
     Transform a glyph with its width preserved.
