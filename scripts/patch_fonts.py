@@ -31,6 +31,10 @@ def patch(font: fontforge.font):
     # # Tweak 'dollar' ($) for better display with uppercase letters.
     # utils.align_with(font[ord("$")], font[ord("T")])
 
+    # # Enlarge and center 'asterisk' (*).
+    # utils.scale(font[ord("*")], 1.15, 1.15)
+    # utils.align_with(font[ord("*")], font[ord("-")], 1.05)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
