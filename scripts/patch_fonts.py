@@ -40,6 +40,9 @@ def patch(font: fontforge.font):
     # utils.scale(font[ord("`")], 1.10, 1.05)
     # utils.align_with(font[ord("`")], font[ord("'")])
 
+    # # Center 'asciitilde' (~).
+    # utils.align_with(font[ord("~")], font[ord("-")])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
