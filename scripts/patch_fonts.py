@@ -35,6 +35,11 @@ def patch(font: fontforge.font):
     # utils.scale(font[ord("*")], 1.15, 1.15)
     # utils.align_with(font[ord("*")], font[ord("-")], 1.05)
 
+    # # Thicken 'quotesingle' (') and 'grave' (`).
+    # utils.scale(font[ord("'")], 1.15, 1.00)
+    # utils.scale(font[ord("`")], 1.10, 1.05)
+    # utils.align_with(font[ord("`")], font[ord("'")])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
