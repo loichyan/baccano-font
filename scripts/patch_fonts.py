@@ -25,6 +25,9 @@ def patch(font: fontforge.font):
     # # Fix position of 'hyphen' (-).
     # utils.align_with(font[ord("-")], font[ord("=")])
 
+    # # Tweak 'at' (@) for better display with uppercase letters.
+    # utils.align_with(font[ord("@")], font[ord("T")], 0.90)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
