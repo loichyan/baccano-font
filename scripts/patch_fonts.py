@@ -46,6 +46,10 @@ def patch(font: fontforge.font):
     # # Shrink 'ampersand' (&).
     # utils.scale(font[ord("&")], 0.95, 1.00)
 
+    # # Thicken underline for better terminal display.
+    # font.uwidth = int(font.uwidth * 1.15)
+    # font.upos = int(-font.descent + font.uwidth)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
