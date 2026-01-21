@@ -43,6 +43,9 @@ def patch(font: fontforge.font):
     # # Center 'asciitilde' (~).
     # utils.align_with(font[ord("~")], font[ord("-")])
 
+    # # Shrink 'ampersand' (&).
+    # utils.scale(font[ord("&")], 0.95, 1.00)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
