@@ -10,6 +10,10 @@ def patch(font: fontforge.font):
     Add customizations here.
     """
 
+    # # Clear font hint instructions
+    # for g in font.glyphs():
+    #     g.ttinstrs = bytes()
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
