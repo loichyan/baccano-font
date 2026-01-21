@@ -14,6 +14,10 @@ def patch(font: fontforge.font):
     # for g in font.glyphs():
     #     g.ttinstrs = bytes()
 
+    # # Ensure monospaced.
+    # for g in font.glyphs():
+    #     g.width = 1233
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")

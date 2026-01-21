@@ -6126,6 +6126,7 @@ EndChar
 StartChar: Ccircumflex
 Encoding: 264 264 200
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2062 -1 N 1 0 0 1 193 373 2
@@ -6135,6 +6136,7 @@ EndChar
 StartChar: ccircumflex
 Encoding: 265 265 201
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 620 710 N 1 0 0 1 86 0 2
@@ -6362,6 +6364,7 @@ EndChar
 StartChar: Gcircumflex
 Encoding: 284 284 220
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2062 -1 N 1 0 0 1 185 373 2
@@ -6371,6 +6374,7 @@ EndChar
 StartChar: gcircumflex
 Encoding: 285 285 221
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 620 710 N 1 0 0 1 0 0 2
@@ -6441,6 +6445,7 @@ EndChar
 StartChar: Hcircumflex
 Encoding: 292 292 228
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2062 -1 N 1 0 0 1 76 373 2
@@ -6450,6 +6455,7 @@ EndChar
 StartChar: hcircumflex
 Encoding: 293 293 229
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2062 -1 N 1 0 0 1 -211 373 2
@@ -6534,6 +6540,7 @@ EndChar
 StartChar: Itilde
 Encoding: 296 296 232
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2059 -1 N 1 0 0 1 47 373 2
@@ -6543,6 +6550,7 @@ EndChar
 StartChar: itilde
 Encoding: 297 297 233
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 638 732 N 1 0 0 1 -45 0 2
@@ -6730,6 +6738,7 @@ EndChar
 StartChar: Jcircumflex
 Encoding: 308 308 244
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2062 -1 N 1 0 0 1 139 373 2
@@ -6739,6 +6748,7 @@ EndChar
 StartChar: jcircumflex
 Encoding: 309 309 245
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 620 710 N 1 0 0 1 -38 0 2
@@ -6855,6 +6865,7 @@ EndChar
 StartChar: Ldot
 Encoding: 319 319 255
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 119 183 N 1 0 0 1 423.03 172.5 2
@@ -7326,6 +7337,7 @@ EndChar
 StartChar: Scircumflex
 Encoding: 348 348 284
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2062 -1 N 1 0 0 1 78 373 2
@@ -7335,6 +7347,7 @@ EndChar
 StartChar: scircumflex
 Encoding: 349 349 285
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 620 710 N 1 0 0 1 0 0 2
@@ -7492,6 +7505,7 @@ EndChar
 StartChar: Utilde
 Encoding: 360 360 296
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2059 -1 N 1 0 0 1 57 373 2
@@ -7501,6 +7515,7 @@ EndChar
 StartChar: utilde
 Encoding: 361 361 297
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 638 732 N 1 0 0 1 0 0 2
@@ -10115,6 +10130,7 @@ EndChar
 StartChar: uni01E8
 Encoding: 488 488 422
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2063 -1 N 1 0 0 1 80 373 2
@@ -10124,6 +10140,7 @@ EndChar
 StartChar: uni01E9
 Encoding: 489 489 423
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2063 -1 N 1 0 0 1 160 373 2
@@ -10173,6 +10190,7 @@ EndChar
 StartChar: uni01EE
 Encoding: 494 494 428
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2063 -1 N 1 0 0 1 47 373 2
@@ -10266,6 +10284,7 @@ EndChar
 StartChar: AEacute
 Encoding: 508 508 435
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2058 -1 N 1 0 0 1 260 373 2
@@ -10275,6 +10294,7 @@ EndChar
 StartChar: aeacute
 Encoding: 509 509 436
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 116 180 N 1 0 0 1 0 0 2
@@ -15348,6 +15368,7 @@ EndChar
 StartChar: uni02BD
 Encoding: 701 701 615
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 673 788 N 1 0 0 1 0 0 2

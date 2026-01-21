@@ -6621,6 +6621,7 @@ EndChar
 StartChar: ccircumflex
 Encoding: 265 265 201
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 619 710 N 1 0 0 1 90 0 2
@@ -6852,6 +6853,7 @@ EndChar
 StartChar: Gcircumflex
 Encoding: 284 284 220
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2060 -1 N 1 0 0 1 57 373 2
@@ -6861,6 +6863,7 @@ EndChar
 StartChar: gcircumflex
 Encoding: 285 285 221
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 619 710 N 1 0 0 1 0 0 2
@@ -6931,6 +6934,7 @@ EndChar
 StartChar: Hcircumflex
 Encoding: 292 292 228
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2060 -1 N 1 0 0 1 75 373 2
@@ -6940,6 +6944,7 @@ EndChar
 StartChar: hcircumflex
 Encoding: 293 293 229
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2060 -1 N 1 0 0 1 -212 373 2
@@ -7022,6 +7027,7 @@ EndChar
 StartChar: Itilde
 Encoding: 296 296 232
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2058 -1 N 1 0 0 1 57 373 2
@@ -7031,6 +7037,7 @@ EndChar
 StartChar: itilde
 Encoding: 297 297 233
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 637 732 N 1 0 0 1 -29 0 2
@@ -7214,6 +7221,7 @@ EndChar
 StartChar: Jcircumflex
 Encoding: 308 308 244
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2060 -1 N 1 0 0 1 135 373 2
@@ -7223,6 +7231,7 @@ EndChar
 StartChar: jcircumflex
 Encoding: 309 309 245
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 619 710 N 1 0 0 1 -29 0 2
@@ -7339,6 +7348,7 @@ EndChar
 StartChar: Ldot
 Encoding: 319 319 255
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 119 183 N 1 0 0 1 355.299 143.5 2
@@ -7730,6 +7740,7 @@ EndChar
 StartChar: Racute
 Encoding: 340 340 276
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2057 -1 N 1 0 0 1 55 374 2
@@ -7740,6 +7751,7 @@ EndChar
 StartChar: racute
 Encoding: 341 341 277
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 116 180 N 1 0 0 1 207.608 7 2
@@ -7812,6 +7824,7 @@ EndChar
 StartChar: Scircumflex
 Encoding: 348 348 284
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2060 -1 N 1 0 0 1 111 373 2
@@ -7821,6 +7834,7 @@ EndChar
 StartChar: scircumflex
 Encoding: 349 349 285
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 619 710 N 1 0 0 1 69.4907 28 2
@@ -7978,6 +7992,7 @@ EndChar
 StartChar: Utilde
 Encoding: 360 360 296
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2058 -1 N 1 0 0 1 55 373 2
@@ -7987,6 +8002,7 @@ EndChar
 StartChar: utilde
 Encoding: 361 361 297
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 637 732 N 1 0 0 1 -4 0 2
@@ -10582,6 +10598,7 @@ EndChar
 StartChar: uni01E8
 Encoding: 488 488 421
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2061 -1 N 1 0 0 1 57 373 2
@@ -10591,6 +10608,7 @@ EndChar
 StartChar: uni01E9
 Encoding: 489 489 422
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2061 -1 N 1 0 0 1 57 373 2
@@ -10640,6 +10658,7 @@ EndChar
 StartChar: uni01EE
 Encoding: 494 494 427
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2061 -1 N 1 0 0 1 57 373 2
@@ -10649,6 +10668,7 @@ EndChar
 StartChar: uni01EF
 Encoding: 495 495 428
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 620 711 N 1 0 0 1 0 0 2
@@ -10731,6 +10751,7 @@ EndChar
 StartChar: AEacute
 Encoding: 508 508 434
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2057 -1 N 1 0 0 1 298 373 2
@@ -10740,6 +10761,7 @@ EndChar
 StartChar: aeacute
 Encoding: 509 509 435
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 116 180 N 1 0 0 1 0 0 2
@@ -10749,6 +10771,7 @@ EndChar
 StartChar: Oslashacute
 Encoding: 510 510 436
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 2057 -1 N 1 0 0 1 43 373 2
@@ -15766,6 +15789,7 @@ EndChar
 StartChar: uni02BD
 Encoding: 701 701 614
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 Refer: 672 788 N 1 0 0 1 0 0 2
@@ -28733,6 +28757,7 @@ EndChar
 StartChar: uni2243
 Encoding: 8771 8771 1274
 Width: 1233
+Flags: W
 LayerCount: 2
 Fore
 SplineSet
