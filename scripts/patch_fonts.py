@@ -18,6 +18,10 @@ def patch(font: fontforge.font):
     # for g in font.glyphs():
     #     g.width = 1233
 
+    # # Round coordinates.
+    # for g in font.glyphs():
+    #     utils.round(g)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
