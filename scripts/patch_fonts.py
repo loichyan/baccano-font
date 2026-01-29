@@ -50,6 +50,10 @@ def patch(font: fontforge.font):
     # font.uwidth = int(font.uwidth * 1.15)
     # font.upos = int(-font.descent + font.uwidth)
 
+    # # Align brackets.
+    # for ch in ["(", ")", "[", "]", "{", "}"]:
+    #     utils.align_with(font[ord(ch)], font[ord("-")])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
