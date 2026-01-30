@@ -54,6 +54,9 @@ def patch(font: fontforge.font):
     # for ch in ["(", ")", "[", "]", "{", "}"]:
     #     utils.align_with(font[ord(ch)], font[ord("-")])
 
+    # # Fix alignment of 'slash' (/).
+    # utils.align_with(font[ord("/")], font[ord("T")])
+
 
 def main():
     parser = argparse.ArgumentParser(description="Apply customizations to fonts")
