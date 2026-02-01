@@ -74,7 +74,7 @@ jobs:
   # 4. Publish the release when it's ready.
   release:
     name: Create GitHub release
-    needs: [build, changelog]
+    needs: [build]
     if: startsWith(github.head_ref, 'release/')
     permissions:
       contents: write # need to update release
