@@ -15,7 +15,7 @@ defaults:
 
 jobs:
   build:
-    name: Run tests and checks
+    name: Build release artifacts
     if: startsWith(github.head_ref, 'release/')
     runs-on: ubuntu-latest
     steps:
@@ -45,29 +45,29 @@ jobs:
         run: fontforge -script build.py ttf
 
       - name: Build | Build nerdfonts
-        run: |
-          parallel fontforge -script nerd/font-patcher \
+        run: >
+          parallel fontforge -script nerd/font-patcher
             --complete --mono --boxdrawing -out build/TTF-NF ::: build/TTF/*
 
       - name: Post Build | Pack fonts
-        id: pack
         run: |
-          (cd build/TTF;    cp ../../LICENSE .; 7z a ../Baccano.zip    LICENSE *.ttf)
-          (cd build/TTF-NF; cp ../../LICENSE .; 7z a ../Baccano-NF.zip LICENSE *.ttf)
-          echo name="Baccano.zip" >>$GITHUB_OUTPUT
+          project=$(pwd)
+          (cd build/TTF;    cp "$project/LICENSE" .; 7z a "$project/build/Baccano.zip"    LICENSE *.ttf)
+          (cd build/TTF-NF; cp "$project/LICENSE" .; 7z a "$project/build/Baccano-NF.zip" LICENSE *.ttf)
 
       - name: Post Build | Generate checksums
         run: |
-          openssl dgst -sha256 -r '${{ steps.pack.outputs.name }}' |
-            cut -d' ' -f1 >'${{ steps.pack.outputs.name }}.sha256'
+          for f in build/Baccano*.zip; do
+            openssl dgst -sha256 -r "$f" | cut -d' ' -f1 >"$f.sha256"
+          done
 
       - name: Pre Release | Upload artifacts
         uses: actions/upload-artifact@v6
         with:
-          name: ${{ needs.metadata.outputs.name }}
+          name: baccano-font
           path: |
-            ${{ steps.pack.outputs.name }}
-            ${{ steps.pack.outputs.name }}.sha256
+            build/Baccano*.zip
+            build/Baccano*.zip.sha256
 
   # How to create a new GitHub release?
   # 1. Create a release branch named "release/<tag>".
@@ -94,7 +94,7 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           path: build/
-          pattern: ${{ needs.metadata.outputs.name }}
+          pattern: baccano-font
 
       - name: Release | Create Release
         env:
