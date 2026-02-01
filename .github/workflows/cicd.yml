@@ -14,32 +14,6 @@ defaults:
     shell: bash
 
 jobs:
-  changelog:
-    name: Update changelog
-    if: github.event_name == 'pull_request'
-    permissions:
-      contents: write # need to commit changes
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup | Checkout
-        uses: actions/checkout@v6
-        with: { ref: "${{ github.head_ref }}" }
-
-      - name: Doc | Update changelog
-        run: |
-          sed -i \
-            -e 's/{{PRNUM}}/${{ github.event.number }}/g' \
-            -e "s/{{DATE}}/$(date -u +'%Y-%m-%d')/g" \
-            CHANGELOG.md
-
-      - name: Post Doc | Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          commit_message: "docs: expand variables in changelog"
-          commit_user_name: github-actions[bot]
-          commit_user_email: github-actions[bot]@users.noreply.github.com
-          commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-
   build:
     name: Run tests and checks
     if: startsWith(github.head_ref, 'release/')
@@ -54,18 +28,30 @@ jobs:
         with:
           enable-cache: false
 
-      - name: Setup | Install dependencies
+      - name: Setup | Fontforge
+        run: |
+          sudo apt update -yq
+          sudo apt install fontforge -yq
+
+      - name: Setup | Nerdfonts
+        run: |
+          wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
+          unzip -d nerd FontPatcher.zip
+
+      - name: Setup | Python dependencies
         run: uv sync
 
       - name: Build | Build fonts
-        run: ./build.py ttf
+        run: fontforge -script build.py ttf
+
+      - name: Build | Build nerdfonts
+        run: fontforge -script nerd/font-patcher --complete --mono --boxdrawing -out build/TTF-NF build/TTF/*
 
       - name: Post Build | Pack fonts
         id: pack
         run: |
-          cp LICENSE build/
-          cd build
-          7z a ../Baccano.zip *
+          (cd build/TTF;    cp ../../LICENSE .; 7z a ../Baccano.zip    LICENSE *.ttf)
+          (cd build/TTF-NF; cp ../../LICENSE .; 7z a ../Baccano-NF.zip LICENSE *.ttf)
           echo name="Baccano.zip" >>$GITHUB_OUTPUT
 
       - name: Post Build | Generate checksums
