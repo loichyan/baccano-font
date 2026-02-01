@@ -1,0 +1,133 @@
+name: CICD
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md"]
+  pull_request:
+    paths-ignore: ["**.md"]
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  changelog:
+    name: Update changelog
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: write # need to commit changes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v6
+        with: { ref: "${{ github.head_ref }}" }
+
+      - name: Doc | Update changelog
+        run: |
+          sed -i \
+            -e 's/{{PRNUM}}/${{ github.event.number }}/g' \
+            -e "s/{{DATE}}/$(date -u +'%Y-%m-%d')/g" \
+            CHANGELOG.md
+
+      - name: Post Doc | Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          commit_message: "docs: expand variables in changelog"
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          commit_author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+
+  build:
+    name: Run tests and checks
+    if: startsWith(github.head_ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup | Python
+        id: setup-python
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: false
+
+      - name: Setup | Install dependencies
+        run: uv sync
+
+      - name: Build | Build fonts
+        run: ./build.py ttf
+
+      - name: Post Build | Pack fonts
+        id: pack
+        run: |
+          cp LICENSE build/
+          cd build
+          7z a ../Baccano.zip *
+          echo name="Baccano.zip" >>$GITHUB_OUTPUT
+
+      - name: Post Build | Generate checksums
+        run: |
+          openssl dgst -sha256 -r '${{ steps.pack.outputs.name }}' |
+            cut -d' ' -f1 >'${{ steps.pack.outputs.name }}.sha256'
+
+      - name: Pre Release | Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ needs.metadata.outputs.name }}
+          path: |
+            ${{ steps.pack.outputs.name }}
+            ${{ steps.pack.outputs.name }}.sha256
+
+  # How to create a new GitHub release?
+  # 1. Create a release branch named "release/<tag>".
+  # 2. Open a PR from the branch, including the release note in the PR body.
+  # 3. Wait for the CI to create a draft release.
+  # 4. Publish the release when it's ready.
+  release:
+    name: Create GitHub release
+    needs: [build, changelog]
+    if: startsWith(github.head_ref, 'release/')
+    permissions:
+      contents: write # need to update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup | Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup | Configure
+        id: configure
+        run: |
+          echo tag="${GITHUB_HEAD_REF#release/}" >$GITHUB_OUTPUT
+
+      - name: Setup | Download artifacts
+        uses: actions/download-artifact@v7
+        with:
+          path: build/
+          pattern: ${{ needs.metadata.outputs.name }}
+
+      - name: Release | Create Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ steps.configure.outputs.tag }}
+          release_body: ${{ github.event.pull_request.body }}
+        run: |
+          if gh release view "$release_tag" >/dev/null; then
+            echo "update existing release $release_tag"
+            gh release edit "$release_tag" --notes="$release_body"
+          else
+            echo "create new release $release_tag"
+            gh release create "$release_tag" \
+              --target="$GITHUB_BASE_REF" \
+              --draft=true \
+              --title="${release_tag#v} ($(date -u +'%Y-%m-%d'))" \
+              --notes="$release_body"
+          fi
+
+      - name: Release | Upload artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          release_tag: ${{ steps.configure.outputs.tag }}
+        run: gh release upload --clobber "$release_tag" build/*
