@@ -31,7 +31,7 @@ jobs:
       - name: Setup | Fontforge
         run: |
           sudo apt update -yq
-          sudo apt install fontforge -yq
+          sudo apt install -yq fontforge parallel
 
       - name: Setup | Nerdfonts
         run: |
@@ -45,7 +45,9 @@ jobs:
         run: fontforge -script build.py ttf
 
       - name: Build | Build nerdfonts
-        run: fontforge -script nerd/font-patcher --complete --mono --boxdrawing -out build/TTF-NF build/TTF/*
+        run: |
+          parallel fontforge -script nerd/font-patcher \
+            --complete --mono --boxdrawing -out build/TTF-NF ::: build/TTF/*
 
       - name: Post Build | Pack fonts
         id: pack
