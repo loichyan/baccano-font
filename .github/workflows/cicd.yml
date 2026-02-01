@@ -46,8 +46,7 @@ jobs:
 
       - name: Build | Build nerdfonts
         run: >
-          parallel fontforge -script nerd/font-patcher
-            --complete --mono --boxdrawing -out build/TTF-NF ::: build/TTF/*
+          parallel fontforge -script nerd/font-patcher --complete --mono --boxdrawing -out build/TTF-NF ::: build/TTF/*
 
       - name: Post Build | Pack fonts
         run: |
