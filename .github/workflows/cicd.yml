@@ -45,14 +45,16 @@ jobs:
         run: fontforge -script build.py ttf
 
       - name: Build | Build nerdfonts
-        run: >
-          parallel fontforge -script nerd/font-patcher --complete --mono --boxdrawing -out build/TTF-NF ::: build/TTF/*
+        run: |
+          parallel fontforge -script nerd/font-patcher --boxdrawing --complete        -out build/TTF-NF  ::: build/TTF/*
+          parallel fontforge -script nerd/font-patcher --boxdrawing --complete --mono -out build/TTF-NFM ::: build/TTF/*
 
       - name: Post Build | Pack fonts
         run: |
           project=$(pwd)
-          (cd build/TTF;    cp "$project/LICENSE" .; 7z a "$project/build/Baccano.zip"    LICENSE *.ttf)
-          (cd build/TTF-NF; cp "$project/LICENSE" .; 7z a "$project/build/Baccano-NF.zip" LICENSE *.ttf)
+          (cd build/TTF;     cp "$project/LICENSE" .; 7z a "$project/build/Baccano.zip"             LICENSE *.ttf)
+          (cd build/TTF-NF;  cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFont.zip"     LICENSE *.ttf)
+          (cd build/TTF-NFM; cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFontMono.zip" LICENSE *.ttf)
 
       - name: Post Build | Generate checksums
         run: |
