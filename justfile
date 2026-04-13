@@ -16,8 +16,12 @@ build-nerdfont *args:
     mkdir -p build/TTF-NF/
     docker run -it --rm -v ./build/TTF:/in:Z -v ./build/TTF-NF:/out:Z nerdfonts/patcher:latest {{args}}
 
-install:
-    install -Dm644 build/TTF/* -t {{prefix / 'share/fonts/baccano'}}
+hint *args:
+    find build -name "*.ttf" -not -path "*HINTED*" -exec \
+        sh -c 'mkdir -p "$(dirname "$1")-HINTED"; ttfautohint {{args}} "$1" "$(dirname "$1")-HINTED/$(basename "$1")"' - {} \;
+
+install build='build/TTF':
+    find {{build}} -name "*.ttf" -exec install -Dm644 {} -t {{prefix / 'share/fonts/baccano'}} \;
 
 patch: && fix-flags
     ./scripts/patch_fonts.py src/*.sfd

@@ -31,7 +31,7 @@ jobs:
       - name: Setup | Fontforge
         run: |
           sudo apt update -yq
-          sudo apt install -yq fontforge parallel
+          sudo apt install -yq fontforge parallel ttfautohint
 
       - name: Setup | Nerdfonts
         run: |
@@ -46,15 +46,24 @@ jobs:
 
       - name: Build | Build nerdfonts
         run: |
-          parallel fontforge -script nerd/font-patcher --boxdrawing --complete        -out build/TTF-NF  ::: build/TTF/*
-          parallel fontforge -script nerd/font-patcher --boxdrawing --complete --mono -out build/TTF-NFM ::: build/TTF/*
+          find build/TTF -name "*.ttf" | parallel fontforge -script nerd/font-patcher --boxdrawing --complete -out build/TTF-NF {}
+          find build/TTF -name "*.ttf" | parallel fontforge -script nerd/font-patcher --boxdrawing --complete --mono -out build/TTF-NFM {}
+
+      - name: Build | Hint fonts
+        run: |
+          mkdir build/TTF-HINTED;     find build/TTF     -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-HINTED/{}
+          mkdir build/TTF-NF-HINTED;  find build/TTF-NF  -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-NF-HINTED/{}
+          mkdir build/TTF-NFM-HINTED; find build/TTF-NFM -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-NFM-HINTED/{}
 
       - name: Post Build | Pack fonts
         run: |
           project=$(pwd)
-          (cd build/TTF;     cp "$project/LICENSE" .; 7z a "$project/build/Baccano.zip"             LICENSE *.ttf)
-          (cd build/TTF-NF;  cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFont.zip"     LICENSE *.ttf)
-          (cd build/TTF-NFM; cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFontMono.zip" LICENSE *.ttf)
+          (cd build/TTF;            cp "$project/LICENSE" .; 7z a "$project/build/Baccano.zip"                    LICENSE *.ttf)
+          (cd build/TTF-NF;         cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFont.zip"            LICENSE *.ttf)
+          (cd build/TTF-NFM;        cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFontMono.zip"        LICENSE *.ttf)
+          (cd build/TTF-HINTED;     cp "$project/LICENSE" .; 7z a "$project/build/Baccano-Hinted.zip"             LICENSE *.ttf)
+          (cd build/TTF-NF-HINTED;  cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFont-Hinted.zip"     LICENSE *.ttf)
+          (cd build/TTF-NFM-HINTED; cp "$project/LICENSE" .; 7z a "$project/build/BaccanoNerdFontMono-Hinted.zip" LICENSE *.ttf)
 
       - name: Post Build | Generate checksums
         run: |
