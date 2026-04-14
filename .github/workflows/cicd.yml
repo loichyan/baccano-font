@@ -51,9 +51,9 @@ jobs:
 
       - name: Build | Hint fonts
         run: |
-          mkdir build/TTF-HINTED;     find build/TTF     -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-HINTED/{}
-          mkdir build/TTF-NF-HINTED;  find build/TTF-NF  -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-NF-HINTED/{}
-          mkdir build/TTF-NFM-HINTED; find build/TTF-NFM -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-NFM-HINTED/{}
+          mkdir build/TTF-HINTED;     find build/TTF     -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-HINTED/{/}
+          mkdir build/TTF-NF-HINTED;  find build/TTF-NF  -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-NF-HINTED/{/}
+          mkdir build/TTF-NFM-HINTED; find build/TTF-NFM -name "*.ttf" | parallel ttfautohint -cW {} build/TTF-NFM-HINTED/{/}
 
       - name: Post Build | Pack fonts
         run: |
