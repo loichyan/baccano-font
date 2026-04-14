@@ -4,14 +4,14 @@ FullName: Baccano BoldItalic
 FamilyName: Baccano
 Weight: Bold
 Copyright: Copyright (c) 2026 Loi Chyan. All Rights Reserved.\nCopyright (c) 2023 Eigil Nikolajsen (eigi0088@gmail.com). All Rights Reserved.\nCopyright (c) 2006 Tavmjong Bah. All Rights Reserved.\nCopyright (c) 2003 Bitstream, Inc. All Rights Reserved.\nDejaVu changes are in public domain.\n\nThis Font Software is licensed under the SIL Open Font License, Version 1.1.\nThis license is copied below, and is also available with a FAQ at:\nhttp://scripts.sil.org/OFL
-Version: 1.00
+Version: 1.1
 ItalicAngle: -11
 UnderlinePosition: -389
 UnderlineWidth: 103
 Ascent: 1556
 Descent: 492
 InvalidEm: 0
-sfntRevision: 0x00010000
+sfntRevision: 0x0001199a
 LayerCount: 2
 Layer: 0 1 "Back" 1
 Layer: 1 1 "Fore" 0
@@ -1267,7 +1267,7 @@ ShortTable: maxp 16
   3
   1
 EndShort
-LangName: 1033 "" "" "" "Baccano BoldItalic" "" "Version 1.00" "" "" "Loi Chyan" "" "" "https://github.com/loichyan/baccano-font" "" "SIL Open Font License Version 1.1" "https://openfontlicense.org/documents/OFL.txt"
+LangName: 1033 "" "" "" "Baccano BoldItalic" "" "Version 1.1" "" "" "Loi Chyan" "" "" "https://github.com/loichyan/baccano-font" "" "SIL Open Font License Version 1.1" "https://openfontlicense.org/documents/OFL.txt"
 Encoding: UnicodeFull
 UnicodeInterp: none
 NameList: AGL without afii
